@@ -1,10 +1,9 @@
-﻿using PRMS.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace PRMS.Entities
+namespace PRMS.DTOs
 {
-    public class Publisher
+    public class PublisherDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -12,11 +11,11 @@ namespace PRMS.Entities
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime BaptismDate { get; set; }
+        public int Age { get; set; }
         public int ContactNumber { get; set; }
         public string Gender { get; set; }
         public int GroupId { get; set; }
-        public Group Group { get; set; }
-        public ICollection<Report> Reports { get; set; }
-        public ICollection<Appointed> Appointeds { get; set; }
+        public GroupDto Group { get; set; }
+        public IEnumerable<AppointedDto> Appointeds { get; set; }
     }
 }

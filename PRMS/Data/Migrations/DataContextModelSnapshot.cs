@@ -167,7 +167,7 @@ namespace PRMS.Data.Migrations
             modelBuilder.Entity("PRMS.Entities.Publisher", b =>
                 {
                     b.HasOne("PRMS.Entities.Group", "Group")
-                        .WithMany()
+                        .WithMany("Publishers")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -184,6 +184,11 @@ namespace PRMS.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Publihser");
+                });
+
+            modelBuilder.Entity("PRMS.Entities.Group", b =>
+                {
+                    b.Navigation("Publishers");
                 });
 
             modelBuilder.Entity("PRMS.Entities.Publisher", b =>

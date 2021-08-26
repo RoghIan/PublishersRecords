@@ -1,35 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PRMS.Data;
-using PRMS.Entities;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using PRMS.DTOs;
+using PRMS.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PRMS.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PublishersController : ControllerBase
+    public class PublishersController : BaseApiController
     {
-        private readonly DataContext _context;
+        private readonly IPublihserRepository _publihserRepository;
+        private readonly IMapper _mapper;
 
-        public PublishersController(DataContext context)
+        public PublishersController(IPublihserRepository publihserRepository,IMapper mapper)
         {
-            _context = context;
+            _publihserRepository = publihserRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Publisher>>> Get()
+        public async Task<ActionResult<IEnumerable<PublisherDto>>> Get()
         {
-            var publishers = await _context.Publishers.ToListAsync();
+            var publishers = await _publihserRepository.GetPublishersAsync();
 
-            return publishers;
+            return Ok(publishers);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Publisher>> Get(int id)
+        public async Task<ActionResult<PublisherDto>> Get(int id)
         {
-            return await _context.Publishers.FindAsync(id);
+            var publisher = await _publihserRepository.GetPublisherByIdAsync(id);
+
+            return publisher;
         }
 
         // POST api/<PublishersController>

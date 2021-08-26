@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PRMS.Entities
+﻿namespace PRMS.DTOs
 {
-    public class Group
+    public class GroupDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int OverseerPublisherId { get; set; }
         public int AssistantPublisherId { get; set; }
-        public ICollection<Publisher> Publishers { get; set; }
     }
 }
