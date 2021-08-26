@@ -13,6 +13,8 @@ namespace PRMS.Helpers
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.BirthDate.CalculateAge()));
             CreateMap<Group, GroupDto>();
             CreateMap<Appointed, AppointedDto>();
+            CreateMap<PublisherUpdateDto, Publisher>();
+            CreateMap<PublisherAddDto, Publisher>();
         }
     }
 }

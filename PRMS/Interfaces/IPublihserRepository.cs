@@ -10,8 +10,12 @@ namespace PRMS.Interfaces
     public interface IPublihserRepository
     {
         void Update(Publisher publisher);
+        void Add(Publisher publisher);
+        void Delete(int id);
         Task<bool> SaveAllAsync();
-        Task<IEnumerable<PublisherDto>> GetPublishersAsync();
-        Task<PublisherDto> GetPublisherByIdAsync(int id);
+        Task<IEnumerable<PublisherDto>> GetPublishersDtoAsync();
+        Task<PublisherDto> GetPublisherDtoByIdAsync(int id);
+        Task<IEnumerable<Publisher>> GetPublishersAsync();
+        Task<Publisher> GetPublisherByIdAsync(int id);
     }
 }
