@@ -85,7 +85,6 @@ namespace PRMS.Controllers
             return BadRequest("Failed to update publisher");
         }
 
-        // DELETE api/<PublishersController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

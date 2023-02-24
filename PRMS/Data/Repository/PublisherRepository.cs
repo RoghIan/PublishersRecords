@@ -40,9 +40,9 @@ namespace PRMS.Data.Repository
             return await _context.Publishers.ToListAsync();
         }
 
-        public async Task<bool> SaveAllAsync()
+        public void Add(Publisher publisher)
         {
-            return await _context.SaveChangesAsync() > 0;
+            _context.Entry(publisher).State = EntityState.Added;
         }
 
         public void Update(Publisher publisher)
@@ -50,16 +50,16 @@ namespace PRMS.Data.Repository
             _context.Entry(publisher).State = EntityState.Modified;
         }
 
-        public void Add(Publisher publisher)
-        {
-            _context.Entry(publisher).State = EntityState.Added;
-        }
-
-        public void Delete (int id)
+        public void Delete(int id)
         {
             var publisher = _context.Publishers.Find(id);
 
             _context.Entry(publisher).State = EntityState.Deleted;
+        }
+
+        public async Task<bool> SaveAllAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

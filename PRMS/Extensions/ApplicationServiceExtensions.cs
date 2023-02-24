@@ -15,6 +15,7 @@ namespace PRMS.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<IPublihserRepository, PublisherRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
             services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {

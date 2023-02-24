@@ -15,6 +15,7 @@ namespace PRMS.Helpers
             CreateMap<Appointed, AppointedDto>();
             CreateMap<PublisherUpdateDto, Publisher>();
             CreateMap<PublisherAddDto, Publisher>();
+            CreateMap<Report, ReportDto>().ReverseMap();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PRMS.Extensions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PRMS.Entities
 {
@@ -18,5 +19,8 @@ namespace PRMS.Entities
         public Group Group { get; set; }
         public ICollection<Report> Reports { get; set; }
         public ICollection<Appointed> Appointeds { get; set; }
+        [NotMapped]
+        public IEnumerable<int> AppointedIds { get; set; }
+        public bool IsActive { get; set; }
     }
 }

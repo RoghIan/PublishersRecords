@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PRMS.DTOs;
 using PRMS.Entities;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -36,6 +37,18 @@ namespace PRMS.Data
 
             var publisherSeed = await System.IO.File.ReadAllTextAsync("Data/SeedData/PublisherSeedData.json");
             var publishers = JsonSerializer.Deserialize<List<Publisher>>(publisherSeed);
+            var appointeds = await context.Appointeds.ToListAsync();
+
+            foreach (var publisher in publishers)
+            {
+                publisher.Appointeds = new List<Appointed>();
+                foreach (var appointedId in publisher.AppointedIds)
+                {
+                    var appointed = appointeds.Find(x => x.Id == appointedId);
+
+                    publisher.Appointeds.Add(appointed);
+                }
+            }
 
             context.Publishers.AddRange(publishers);
             await context.SaveChangesAsync();
