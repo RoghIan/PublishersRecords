@@ -19,7 +19,9 @@ namespace PRMS.Extensions
             services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(config.GetConnectionString("DefaultConnection"),
+                    o => o
+                    .MaxBatchSize(1000));
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

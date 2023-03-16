@@ -1,13 +1,8 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Identity.Web;
-using Microsoft.OpenApi.Models;
-using PRMS.Data;
 using PRMS.Extensions;
 using PRMS.Middleware;
 
@@ -28,10 +23,7 @@ namespace PRMS
 
             services.AddApplicationServices(_configuration);
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PRMS", Version = "v1" });
-            });
+            services.AddSwaggerGen();
 
             services.AddCors();
         }
