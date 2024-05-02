@@ -15,6 +15,7 @@ namespace PRMS.DTOs
         public int ContactNumber { get; set; }
         public string Gender { get; set; }
         public int GroupId { get; set; }
+        public bool IsActive { get; set; }
         public IEnumerable<int> AppointedIds { get; set; }
     }
 }

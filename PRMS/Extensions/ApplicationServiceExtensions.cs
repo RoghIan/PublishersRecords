@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using API.Data.Repository;
+using API.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ namespace PRMS.Extensions
         {
             services.AddScoped<IPublihserRepository, PublisherRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
+            services.AddScoped<IAppointedRepository, AppointedRepository>();
             services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using API.Enums;
+using System;
 
 namespace PRMS.Entities
 {
@@ -11,6 +12,8 @@ namespace PRMS.Entities
         public int ReturnVisits { get; set; }
         public int BibleStudies { get; set; }
         public bool IsAuxi { get; set; }
+        public ReportingAs ReportingAs { get; set; }
+        public bool HasParticipated { get; set; }
         public string Remarks { get; set; }
         public DateTime ReportDate { get; set; }
         public DateTime CreatedDate { get; set; }
