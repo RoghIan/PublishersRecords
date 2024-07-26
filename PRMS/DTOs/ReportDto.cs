@@ -20,5 +20,8 @@ namespace PRMS.DTOs
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public string PublisherId { get; set; }
         public string Participated { get; set; }
+        public string Remarks { get; set; }
+        public DateTime BirthDate { get; set; }
+        public DateTime BaptismDate { get; set; }
     }
 }

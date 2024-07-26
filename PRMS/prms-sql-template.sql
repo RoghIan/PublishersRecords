@@ -311,21 +311,39 @@ ORDER BY LastName, FirstName
 
 
 ---PUBLISHERS HISTORICAL REPORTS AND AVERAGE
-SELECT [Hours] ,
-       [BibleStudies] ,
-       FORMAT (ReportDate, 'MMMM yyyy') AS ReportDate
+SELECT 
+Reports.Id,
+[Hours] ,
+HasParticipated,
+[BibleStudies] ,
+FORMAT (ReportDate, 'MMMM yyyy') AS ReportDate
 FROM [publishers-record-db].[dbo].[Reports]
 INNER JOIN Publishers ON Reports.PublisherId = Publishers.Id
-WHERE PublisherId = 49
+WHERE PublisherId = 3124
+ORDER BY [Reports].ReportDate
 
 
 SELECT PublisherId,
        MAX([FirstName]) AS FirstName,
-       MAX([LastName]) AS LastName,
-       ROUND(AVG([Hours]), 2) AS AverageHours
-FROM [publishers-record-db].[dbo].[PioneerReport]
-WHERE PublisherId = 49
-GROUP BY PublisherId;
+       MAX([LastName]) AS LastName
+       --ROUND(AVG([Hours]), 2) AS AverageHours
+FROM [publishers-record-db].[dbo].[PubAndUnPubReport]
+WHERE PublisherId = 3124
+GROUP BY PublisherId
+
+
+
+--GET ALL ACTIVE PUBLISHERS
+SELECT 
+Id,
+FirstName,
+MiddleName,
+LastName
+FROM Publishers
+WHERE 1=1
+AND IsActive = 1
+ORDER BY LastName, FirstName
+
 
 
 
